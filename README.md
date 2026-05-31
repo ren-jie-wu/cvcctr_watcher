@@ -5,7 +5,7 @@ This script opens the MRI Prospect Connect availability page for `CVCCTR`, selec
 1. latest available date first
 2. if dates tie, lowest monthly rent first
 
-It prints the top 5 and emails you only when the top 5 changes. On the first run it saves a baseline without sending email unless you pass `--send-initial`.
+It prints the top 5 and emails you only when the top 5 changes or on the first run.
 
 ## Install
 

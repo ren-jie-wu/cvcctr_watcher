@@ -520,19 +520,19 @@ async def poll_forever(args: argparse.Namespace) -> None:
             previous = load_previous_state(args.state_path)
             current = top_signature(top)
 
-            changed = previous is not None and previous != current
+            changed = previous != current
             first_run = previous is None
-            if changed or (first_run and args.send_initial):
+            if changed:
                 send_email(top)
                 logging.info("Email sent: top results %s.", "initialized" if first_run else "changed")
-            elif first_run:
-                logging.info("First run: saved baseline without sending email.")
             else:
                 logging.info("No top-result change detected.")
 
             save_state(args.state_path, top)
         except Exception as exc:
             logging.exception("Watcher cycle failed: %s", exc)
+            if args.once:
+                raise
 
         if args.once:
             return
@@ -554,11 +554,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Path for the JSON state file.",
     )
     parser.add_argument("--once", action="store_true", help="Run one check and exit.")
-    parser.add_argument(
-        "--send-initial",
-        action="store_true",
-        help="Send an email on the first run instead of only saving the baseline.",
-    )
     parser.add_argument(
         "--show-browser",
         action="store_true",
