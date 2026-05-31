@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-05-31T05:21:41",
+  "top_signature": [
+    {
+      "unit_id": "16211",
+      "available_date": "2026-05-31",
+      "price": 3395
+    },
+    {
+      "unit_id": "16210",
+      "available_date": "2026-05-31",
+      "price": 3495
+    },
+    {
+      "unit_id": "16215",
+      "available_date": "2026-05-31",
+      "price": 3495
+    },
+    {
+      "unit_id": "16604",
+      "available_date": "2026-05-31",
+      "price": 3495
+    },
+    {
+      "unit_id": "16310",
+      "available_date": "2026-05-31",
+      "price": 3510
+    }
+  ],
+  "top_units": [
+    {
+      "unit_id": "16211",
+      "available_date": "2026-05-31",
+      "price": 3395,
+      "summary": "Unit 16211 | Floorplan Forestdale2.3 | Building 160 | Address 160 Pleasant Street | Sqft 940 | Available 5/31/2026 | Rent $3,395.00",
+      "raw_text": "Unit 16211 | Floorplan Forestdale2.3 | Building 160 | Address 160 Pleasant Street | Sqft 940 | Available 5/31/2026 | Rent $3,395.00"
+    },
+    {
+      "unit_id": "16210",
+      "available_date": "2026-05-31",
+      "price": 3495,
+      "summary": "Unit 16210 | Floorplan Edgewood 2.2 | Building 160 | Address 160 Pleasant Street | Sqft 1,062 | Available 5/31/2026 | Rent $3,495.00 | Amenities Quartz Coutertop",
+      "raw_text": "Unit 16210 | Floorplan Edgewood 2.2 | Building 160 | Address 160 Pleasant Street | Sqft 1,062 | Available 5/31/2026 | Rent $3,495.00 | Amenities Quartz Coutertop"
+    },
+    {
+      "unit_id": "16215",
+      "available_date": "2026-05-31",
+      "price": 3495,
+      "summary": "Unit 16215 | Floorplan Edgewood 2.2 | Building 160 | Address 160 Pleasant Street | Sqft 1,062 | Available 5/31/2026 | Rent $3,495.00 | Amenities Quartz Coutertop",
+      "raw_text": "Unit 16215 | Floorplan Edgewood 2.2 | Building 160 | Address 160 Pleasant Street | Sqft 1,062 | Available 5/31/2026 | Rent $3,495.00 | Amenities Quartz Coutertop"
+    },
+    {
+      "unit_id": "16604",
+      "available_date": "2026-05-31",
+      "price": 3495,
+      "summary": "Unit 16604 | Floorplan Maplewood 2.1 | Building 160 | Address 160 Pleasant Street | Sqft 1,073 | Available 5/31/2026 | Rent $3,495.00 | Amenities Quartz Coutertop, 6th ...",
+      "raw_text": "Unit 16604 | Floorplan Maplewood 2.1 | Building 160 | Address 160 Pleasant Street | Sqft 1,073 | Available 5/31/2026 | Rent $3,495.00 | Amenities Quartz Coutertop, 6th ..."
+    },
+    {
+      "unit_id": "16310",
+      "available_date": "2026-05-31",
+      "price": 3510,
+      "summary": "Unit 16310 | Floorplan Edgewood 2.2 | Building 160 | Address 160 Pleasant Street | Sqft 1,062 | Available 5/31/2026 | Rent $3,510.00 | Amenities Quartz Coutertop, 3rd ...",
+      "raw_text": "Unit 16310 | Floorplan Edgewood 2.2 | Building 160 | Address 160 Pleasant Street | Sqft 1,062 | Available 5/31/2026 | Rent $3,510.00 | Amenities Quartz Coutertop, 3rd ..."
+    }
+  ]
+}
