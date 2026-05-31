@@ -216,7 +216,7 @@ def load_previous_state(path: Path) -> list[dict[str, Any]] | None:
 
 def save_state(path: Path, top: list[Unit]) -> None:
     payload = {
-        "checked_at": datetime.now().isoformat(timespec="seconds"),
+        # "checked_at": datetime.now().isoformat(timespec="seconds"),
         "top_signature": top_signature(top),
         "top_units": [asdict(u) for u in top],
     }
