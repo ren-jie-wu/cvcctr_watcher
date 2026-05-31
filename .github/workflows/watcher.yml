@@ -3,11 +3,6 @@ name: CVCCTR Watcher
 on:
   workflow_dispatch:
     inputs:
-      send_initial:
-        description: "Send email on this manual run even if no previous state exists"
-        required: false
-        default: false
-        type: boolean
 
   schedule:
     - cron: "7,22,37,52 * * * *"
@@ -59,10 +54,6 @@ jobs:
           LOG_LEVEL: INFO
         run: |
           ARGS="--once --state-path cvcctr_state.json"
-
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_initial }}" = "true" ]; then
-            ARGS="$ARGS --send-initial"
-          fi
 
           python cvcctr_watcher.py $ARGS
 
