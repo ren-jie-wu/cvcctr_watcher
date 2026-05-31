@@ -17,7 +17,7 @@ Install:
 Run:
   cp .env.example .env
   # edit .env
-  python cvcctr_watcher.py
+  python watcher.py
 """
 
 from __future__ import annotations
@@ -42,8 +42,16 @@ from dotenv import load_dotenv
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 from playwright.async_api import async_playwright
 
-URL = "https://cpi.mriprospectconnect.com/Search/Index/CVCCTR"
-STATE_PATH_DEFAULT = Path("cvcctr_state.json")
+load_dotenv()
+
+PROPERTY_CODE = os.getenv("PROPERTY_CODE", "CVCCTR")
+URL = os.getenv(
+    "PROPERTY_URL",
+    f"https://cpi.mriprospectconnect.com/Search/Index/{PROPERTY_CODE}",
+)
+STATE_PATH_DEFAULT = Path(
+    os.getenv("STATE_PATH", f"{PROPERTY_CODE.lower()}_state.json")
+)
 
 PRICE_RE = re.compile(r"\$\s*([0-9][0-9,]*(?:\.\d{2})?)")
 DATE_RE = re.compile(
@@ -264,7 +272,7 @@ def render_html_report(units: list[Unit]) -> str:
     """
 
 
-def send_email(top: list[Unit], subject_prefix: str = "CVCCTR watcher") -> None:
+def send_email(top: list[Unit], subject_prefix: str | None = None) -> None:
     required = ["SMTP_HOST", "SMTP_USER", "SMTP_PASSWORD", "EMAIL_TO"]
     missing = [name for name in required if not os.getenv(name)]
     if missing:
@@ -279,6 +287,9 @@ def send_email(top: list[Unit], subject_prefix: str = "CVCCTR watcher") -> None:
     email_to = os.environ["EMAIL_TO"]
     email_from = os.getenv("EMAIL_FROM", smtp_user)
 
+    if subject_prefix is None:
+        subject_prefix = os.getenv("SUBJECT_PREFIX", f"{PROPERTY_CODE} watcher")
+    
     msg = EmailMessage()
     msg["Subject"] = f"{subject_prefix}: top 5 two-bedroom units changed"
     msg["From"] = email_from
@@ -405,7 +416,7 @@ async def click_search(page) -> None:
 async def extract_candidate_texts(page) -> list[str]:
     """Extract unit rows from the MRI Prospect Connect results page.
 
-    The CVCCTR result markup stores the important fields in stable attributes on
+    The result markup stores the important fields in stable attributes on
     each ``tr.pc-row-unit`` row. Using those attributes is more reliable than
     trying to infer unit/date/rent from all visible page text.
     """
@@ -540,7 +551,7 @@ async def poll_forever(args: argparse.Namespace) -> None:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Watch CVCCTR two-bedroom apartment availability.")
+    parser = argparse.ArgumentParser(description="Watch two-bedroom apartment availability.")
     parser.add_argument(
         "--interval-minutes",
         type=int,

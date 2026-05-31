@@ -1,6 +1,6 @@
-# CVCCTR 2-Bedroom Apartment Watcher
+# 2-Bedroom Apartment Watcher
 
-This script opens the MRI Prospect Connect availability page for `CVCCTR`, selects **2** beds, searches, extracts visible unit cards/rows, ranks the units by:
+This script opens the MRI Prospect Connect availability page, selects **2** beds, searches, extracts visible unit cards/rows, ranks the units by:
 
 1. latest available date first
 2. if dates tie, lowest monthly rent first
@@ -27,19 +27,19 @@ Edit `.env`. For Gmail, create an app password and use it as `SMTP_PASSWORD`.
 ## Test once with the browser visible
 
 ```bash
-python cvcctr_watcher.py --once --show-browser --slow-mo 200
+python watcher.py --once --show-browser --slow-mo 200
 ```
 
 ## Run continuously
 
 ```bash
-python cvcctr_watcher.py
+python watcher.py
 ```
 
 Default polling interval is 30 minutes. You can override it:
 
 ```bash
-python cvcctr_watcher.py --interval-minutes 60
+python watcher.py --interval-minutes 60
 ```
 
 ## Notes
